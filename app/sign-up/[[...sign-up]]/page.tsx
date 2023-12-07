@@ -3,6 +3,6 @@ import Start from '@/app/components/start';
 
 export default function Page() {
   return (
-    <Start />
+    <Start modal='signup' />
   );
 }

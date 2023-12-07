@@ -1,7 +1,10 @@
+import 'server-only';
 import '@/app/ui/global.css';
+import '@mantine/core/styles.css';
+import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 import { inter } from '@/app/ui/fonts';
-
 import { Metadata } from 'next';
+import { ClerkProvider } from '@clerk/nextjs'
 
 export const metadata: Metadata = {
   title: {
@@ -18,8 +21,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <head>
+          <ColorSchemeScript />
+        </head>
+        <body className={`${inter.className} antialiased`}>
+          <MantineProvider defaultColorScheme="auto">
+            {children}
+          </MantineProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
