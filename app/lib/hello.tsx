@@ -1,10 +1,15 @@
 'use server'
 import 'server-only'
+import { auth } from '@clerk/nextjs';
 
 export async function getHello() {
+    const { sessionClaims, getToken } = auth();
+    const token = await getToken();
+
     var res;
     try {
         res = await fetch(`${process.env.BACKEND_URL}/api/hello`, {
+            headers: { Authorization: `Bearer ${token}` },
             cache: 'no-store'
         });
     } catch (error) {
