@@ -20,7 +20,7 @@ export default function EditInvoiceForm({
   customers: CustomerField[];
 }) {
   const updateInvoiceWithId = updateInvoice.bind(null, invoice.id);
-  const initialState = { message: null, errors: {} };
+  const initialState = { message: "", errors: {} };
   const [state, dispatch] = useFormState(updateInvoiceWithId, initialState);
 
   return (
@@ -152,7 +152,7 @@ export default function EditInvoiceForm({
           </div>
         ) : null}
       </div>
-      {state.message ? (
+      {(state.message && (state.message != "")) ? (
         <div
           id="message-error"
           aria-live="polite"

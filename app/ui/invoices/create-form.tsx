@@ -13,7 +13,7 @@ import { createInvoice } from '@/app/lib/actions';
 import { useFormState } from 'react-dom';
 
 export default function Form({ customers }: { customers: CustomerField[] }) {
-  const initialState = { message: null, errors: {} };
+  const initialState = { message: "", errors: {} };
   const [state, dispatch] = useFormState(createInvoice, initialState);
 
   return (
@@ -143,7 +143,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
           </div>
         ) : null}
       </div>
-      {state.message ? (
+      {(state.message && (state.message != "")) ? (
         <div
           id="message-error"
           aria-live="polite"
