@@ -9,7 +9,7 @@
     "seed": "node -r dotenv/config ./scripts/seed.js"
   },
   "dependencies": {
-    "@clerk/nextjs": "^4.29.3",
+    "@clerk/nextjs": "^4.31.6",
     "@heroicons/react": "^2.0.18",
     "@mantine/core": "^7.2.1",
     "@mantine/hooks": "^7.2.1",
